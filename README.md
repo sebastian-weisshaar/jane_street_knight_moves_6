@@ -33,7 +33,7 @@ A + B + C must be less than 50.
 
 ## 💡 Solution Approach
 
-My approach to solving the puzzle was the following:
+My approach to solving the puzzle is the following:
 
 1. **Strictly Increasing Score**: The score of each trip is strictly increasing due to the positive integer values of A, B, C, and the scoring rules.
 
