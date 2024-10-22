@@ -3,7 +3,7 @@
 
 Hi! 👋 Welcome to my solution for the Jane Street Puzzle of October 2024. You can find the original puzzle [here](https://www.janestreet.com/puzzles/knight-moves-6-index/). ♟️
 
-<details><summary> 📜  Problem Description</summary>
+<details><summary> 📜 Problem Description</summary>
 
 ### 🎯 Objective
 Pick distinct positive integers A, B, and C, and place them in the grid. Create two corner-to-corner trips that each score exactly 2024 points.
@@ -33,7 +33,7 @@ A + B + C must be less than 50.
 
 ## 💡 Solution Approach
 
-I used the following properties to solve the problem:
+My approach to solving the puzzle was the following:
 
 1. **Strictly Increasing Score**: The score of each trip is strictly increasing due to the positive integer values of A, B, C, and the scoring rules.
 
@@ -45,7 +45,7 @@ I used the following properties to solve the problem:
 
 1. `calculate_new_score(current_score, current_value, next_value)`:
    - Calculates the new score based on the current score and the values of the current and next squares.
-   - Implements the scoring rules: multiply if values are different, add if they're the same.
+   - Implements the scoring rules: multiply if the knight jumps into a different zone, add if it's the same.
 
 2. `find_path(row, col, score, visited, path, target, board)`:
    - Implements a recursive backtracking algorithm to find a valid knight's path.
@@ -66,9 +66,9 @@ I used the following properties to solve the problem:
    - Handles command-line arguments for A, B, and C.
    - Calls `check_solutions` with the provided values.
 
-### 🚀 Optimization Note
+### 📝 Note
 
-The non-commutativity of A, B, C necessitates checking all permutations. For instance, while (1, 2, 253) is a valid solution, (253, 1, 2) is not.
+A, B, C are non-commutative, so we need to check all permutations. For instance, while (1, 2, 253) is a valid solution, (253, 1, 2) is not.
 
 ### 🎉 Results
 
@@ -80,7 +80,7 @@ After testing different combinations, I found one optimal solution:
 
 This results in a sum of 6, which is the lowest possible value for A + B + C.
 
-The paths for both required knight's tours are:
+The paths for both knight's tours are:
 
 1. From a1 to f6:
    `a1,b3,a5,c6,e5,c4,b6,d5,f4,e6,c5,a6,b4,a2,c1,e2,d4,b5,d6,f5,e3,f1,d2,f3,e1,d3,f2,e4,f6`
@@ -89,7 +89,7 @@ The paths for both required knight's tours are:
    `a6,c5,e6,d4,c6,a5,c4,e5,d3,b4,d5,f4,e2,c3,e4,d2,f1`
 
 ### 🖥️ Running the Code
-If you want to run the code yourself, you can do so by cloning the repo and running `python jane_street_oct_22/main.py <A> <B> <C>`.
+If you want to run the code, you can clone the repo and run `python jane_street_oct_22/main.py <A> <B> <C>`.
 
 Happy puzzling! 🧩
 
