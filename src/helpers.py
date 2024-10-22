@@ -25,3 +25,6 @@ def get_knight_moves() -> list[tuple[int, int]]:
         (2, 1),
     ]
     return knight_moves
+
+a1, f6 = (5, 0), (0, 5)
+a6, f1 = (0, 0), (5, 5)

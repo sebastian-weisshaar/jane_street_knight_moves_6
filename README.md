@@ -41,7 +41,7 @@ My approach to solving the puzzle is the following:
 
 3. **Backtracking Algorithm**: We employ a backtracking algorithm to explore different knight moves, stepping back when a path exceeds 2024 points.
 
-### 🔍 Key Functions
+### 🔍 Functions
 
 1. `calculate_new_score(current_score, current_value, next_value)`:
    - Calculates the new score based on the current score and the values of the current and next squares.
