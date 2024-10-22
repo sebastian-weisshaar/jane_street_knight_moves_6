@@ -40,7 +40,7 @@ def find_path(
     visited.remove((row, col))
     return None
 
-def check_numbers(A: int, B: int, C: int, start: tuple[int, int], end: tuple[int, int]):
+def check_numbers(A: int, B: int, C: int, start: tuple[int, int], end: tuple[int, int]) -> str | None:
     board = create_board(A, B, C)
 
     initial_score = board[start[0]][start[1]]
@@ -63,7 +63,7 @@ def check_numbers(A: int, B: int, C: int, start: tuple[int, int], end: tuple[int
         print("No valid path found.")
         return None
     
-def check_solutions(A: int, B: int, C: int):
+def check_solutions(A: int, B: int, C: int) -> bool:
     a1, f6 = (5, 0), (0, 5)
     a6, f1 = (0, 0), (5, 5)
     first_solution = check_numbers(A, B, C, a1, f6)
@@ -72,9 +72,10 @@ def check_solutions(A: int, B: int, C: int):
     print(f"Solution a6 to f1: {second_solution}")
     if first_solution and second_solution:
         print(f"Jane Street solution: {A},{B},{C},{first_solution},{second_solution}")
+        return True
     else:
         print("No solutions found.")
-    return first_solution and second_solution
+        return False
 
 def main():
     if len(sys.argv) != 4:

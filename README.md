@@ -37,35 +37,34 @@ I used the following properties to solve the problem:
 
 1. **Strictly Increasing Score**: The score of each trip is strictly increasing due to the positive integer values of A, B, C, and the scoring rules.
 
-2. **Early Termination**: We can immediately disqualify a solution if the score exceeds 2024, allowing for efficient pruning of the search space.
+2. **Early Termination**: We can immediately disqualify a solution if the score exceeds 2024. 
 
 3. **Backtracking Algorithm**: We employ a backtracking algorithm to explore different knight moves, stepping back when a path exceeds 2024 points.
 
 ### 🔍 Key Functions
 
-1. `find_path(row, col, score, visited, path, target, board)`:
+1. `calculate_new_score(current_score, current_value, next_value)`:
+   - Calculates the new score based on the current score and the values of the current and next squares.
+   - Implements the scoring rules: multiply if values are different, add if they're the same.
+
+2. `find_path(row, col, score, visited, path, target, board)`:
    - Implements a recursive backtracking algorithm to find a valid knight's path.
+   - Terminates early if the score exceeds 2024 or if the square has been visited.
    - Returns the path if found, otherwise None.
 
-2. `check_numbers(A, B, C, start, end)`:
+3. `check_numbers(A, B, C, start, end)`:
    - Creates a board with given A, B, C values and checks for a valid path between start and end points.
-   - Returns True if a valid path is found, False otherwise.
+   - Initializes the search with the starting score and position.
+   - Returns the path in chess notation if a valid path is found, None otherwise.
 
-3. `check_solutions(A, B, C)`:
+4. `check_solutions(A, B, C)`:
    - Verifies if both required paths (a1 to f6 and a6 to f1) are valid for given A, B, C values.
+   - Prints the solutions if found.
    - Returns True if both paths are valid, False otherwise.
 
-4. `calculate_new_score(current_score, current_value, next_value)`:
-   - Calculates the new score based on the current score and the values of the current and next squares.
-
-### 🧠 Algorithm Overview
-
-1. Implement a recursive backtracking function (`find_path`) to explore possible knight moves.
-2. Use `check_numbers` to validate paths for specific start and end points.
-3. Employ `check_solutions` to verify both required paths for given A, B, C values.
-4. Maintain a set of visited squares to prevent revisits.
-5. Store the current path to return the solution if found.
-6. Use `calculate_new_score` to update the score according to the puzzle rules.
+5. `main()`:
+   - Handles command-line arguments for A, B, and C.
+   - Calls `check_solutions` with the provided values.
 
 ### 🚀 Optimization Note
 
