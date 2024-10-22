@@ -1,4 +1,5 @@
 from helpers import create_board, get_knight_moves
+import sys
 
 def calculate_new_score(current_score: int, current_value: int, next_value: int) -> int:
     return current_score * next_value if current_value != next_value else current_score + next_value
@@ -40,14 +41,7 @@ def find_path(
     return None
 
 def check_numbers(A: int, B: int, C: int, start: tuple[int, int], end: tuple[int, int]):
-    board = [
-        [A, B, B, C, C, C],
-        [A, B, B, C, C, C],
-        [A, A, B, B, C, C],
-        [A, A, B, B, C, C],
-        [A, A, A, B, B, C],
-        [A, A, A, B, B, C],
-    ]
+    board = create_board(A, B, C)
 
     initial_score = board[start[0]][start[1]]
     result_path = find_path(
@@ -64,12 +58,38 @@ def check_numbers(A: int, B: int, C: int, start: tuple[int, int], end: tuple[int
         path_in_chess_notation = [
             chr(y + ord("a")) + str(6 - x) for x, y in result_path
         ]
-        print("Path found:", ",".join(path_in_chess_notation))
-        return True
+        return ",".join(path_in_chess_notation)
     else:
         print("No valid path found.")
-        return False
+        return None
+    
+def check_solutions(A: int, B: int, C: int):
+    a1, f6 = (5, 0), (0, 5)
+    a6, f1 = (0, 0), (5, 5)
+    first_solution = check_numbers(A, B, C, a1, f6)
+    second_solution = check_numbers(A, B, C, a6, f1)
+    print(f"Solution a1 to f6: {first_solution}")
+    print(f"Solution a6 to f1: {second_solution}")
+    if first_solution and second_solution:
+        print(f"Jane Street solution: {A},{B},{C},{first_solution},{second_solution}")
+    else:
+        print("No solutions found.")
+    return first_solution and second_solution
 
-A, B, C = 1, 2, 3
-check_numbers(A, B, C, (5, 0), (0, 5))
-check_numbers(A, B, C, (0, 0), (5, 5))
+def main():
+    if len(sys.argv) != 4:
+        print("Usage: python main.py <A> <B> <C>")
+        sys.exit(1)
+    
+    try:
+        A = int(sys.argv[1])
+        B = int(sys.argv[2])
+        C = int(sys.argv[3])
+    except ValueError:
+        print("Error: A, B, and C must be integers")
+        sys.exit(1)
+
+    check_solutions(A, B, C)
+
+if __name__ == "__main__":
+    main()
