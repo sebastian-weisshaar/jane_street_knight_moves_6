@@ -89,7 +89,7 @@ The paths for both knight's tours are:
    `a6,c5,e6,d4,c6,a5,c4,e5,d3,b4,d5,f4,e2,c3,e4,d2,f1`
 
 ### 🖥️ Running the Code
-If you want to run the code, you can clone the repo and run `python jane_street_oct_22/main.py <A> <B> <C>`.
+If you want to run the code, you can clone the repo and run `python src/main.py <A> <B> <C>`.
 
 Happy puzzling! 🧩
 
