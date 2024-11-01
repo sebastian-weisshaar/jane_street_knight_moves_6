@@ -90,6 +90,7 @@ The paths for both knight's tours are:
 
 ### 🖥️ Running the Code
 If you want to run the code, you can clone the repo and run `python src/main.py <A> <B> <C>`.
+The code will check whether your choice of A, B, C is valid and if so return the two paths.
 
 Happy puzzling! 🧩
 
